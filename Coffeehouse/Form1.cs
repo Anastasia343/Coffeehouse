@@ -31,9 +31,9 @@ namespace Coffeehouse
             string user = "SELECT*FROM users";
             MySqlCommand command = new MySqlCommand(user, connect);
             MySqlDataReader reader = command.ExecuteReader();
-            for (; name != nameUser;)
+            for (int a = 0; a < 3; a++)
             {
-                while (reader.Read())
+                while (reader.Read()&&name!=nameUser)
                 {
                     name = reader.GetString(0);
                     password = reader.GetString(1);
@@ -45,14 +45,20 @@ namespace Coffeehouse
                 switch (name)
                 {
                     case "admin":
-                        MessageBox.Show("aaaaa");
-                        break;
+                        Admin ad = new Admin();
+                        ad.Show();
+                        this.Hide();
+                    break;
                     case "cook":
-                        MessageBox.Show("cccc");
-                        break;
+                        Cook co = new Cook();
+                        co.Show();
+                        this.Hide();
+                    break;
                     case "waiter":
-                        MessageBox.Show("wwww");
-                        break;
+                        Waiter wai = new Waiter();
+                        wai.Show();
+                        this.Hide();
+                    break;
                 }
             }
             else
